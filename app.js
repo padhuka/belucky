@@ -2,10 +2,16 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const app = express()
 const logFile = path.join(__dirname, 'myLogFile.log')
 app.use(bodyParser.json())
+app.use(
+  cors({
+    origin: 'https://luckybe.bintang-group.co.id', // Replace with your mobile app's domain
+  })
+)
 // Middleware to log requests
 // app.use((req, res, next) => {
 //   const log = `${new Date().toISOString()} - ${req.method} ${req.url} ${req.body}\n`
